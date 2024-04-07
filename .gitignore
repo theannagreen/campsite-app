@@ -1,2 +1,3 @@
+# Exclude .env file and node modules file 
 .env
 .nodemodules
