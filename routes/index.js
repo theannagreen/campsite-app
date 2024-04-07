@@ -4,7 +4,7 @@ const passport = require('passport');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'CampWise' });
 });
 
 // Google OAuth login route
@@ -32,5 +32,5 @@ router.get('/auth/google', passport.authenticate(
         res.redirect('/campsites');
       });
     });
-    
+
     module.exports = router;
