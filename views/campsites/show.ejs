@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+
+<!-- Content specific to the show Campsites page -->
+<div class="glass">
+    <h1>Campsite Details</h1>
+    <p>This is the show page for a specific campsite.</p>
+
+    <!--Reviews -->
+    <br><h2>Reviews</h2></br>
+<form id="add-review-form" method="POST"
+  action="/movies/<%= movie._id %>/reviews">
+  <label>Review:</label>
+  <textarea name="content"></textarea>
+  <label>Rating:</label>
+  <select name="rating">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5" selected>5</option>
+  </select>
+  <input type="submit" value="Add Review">
+</form>
+  </div>
+<%- include('../partials/footer') %>

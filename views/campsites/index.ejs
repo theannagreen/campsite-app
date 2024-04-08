@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+<table id="list">
+    <thead>
+        <tr>
+            <th>Campsite</th>
+            <th>Location</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% campsites.array.forEach(function(c) { %>
+            <tr>
+                <td><%= c.title  %></td>
+                <td><%= c.location %></td>
+            </tr>
+       <% }); %> 
+    </tbody>
+</table>
+<%- include('../partials/footer') %>

@@ -3,15 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var session = require('express-session');
-var methodOverride = require('method-override');
-var passport = require('passport');
 
 require('dotenv').config();
 require('./config/database');
-require('./config/passport');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
+const indexRouter = require('./routes/index');
+const campsitesRouter = require('./routes/campsites');
+const usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -24,28 +22,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
-app.use(methodOverride('_method'));
 
-app.use(session({
-  secret: process.env.SECRET,
-  resave: false,
-  saveUninitialized: true
-}));
-app.use(passport.initialize());
-app.use(passport.session());
 app.use('/', indexRouter);
+app.use('/campsites', campsitesRouter);
 app.use('/users', usersRouter);
-//passport middleware 
-app.use(passport.initialize());
-app.use(passport.session());
 
-// Add this middleware BELOW passport middleware
-app.use(function (req, res, next) {
-  res.locals.user = req.user;
-  next();
-});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
