@@ -1,45 +1,67 @@
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+// console.log(process.env);
 
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const session = require("express-session");
+var passport = require("passport");
+var methodOverride = require('method-override');
 
-require('dotenv').config();
+
+
+//load environment variables from the .env file: 
+
+require('dotenv').config({ debug: true });
+// passport has to come after dotenv so it can access it (:
+// database connection 
 require('./config/database');
+require('./config/passport');
 
-// Configure Google OAuth strategy
-passport.use(new GoogleStrategy({
-  clientID: process.env.GOOGLE_CLIENT_ID,
-  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: '/auth/google/callback'
-}, (accessToken, refreshToken, profile, done) => {
-  // Callback function implementation
-}));
+
 
 const indexRouter = require('./routes/index');
 const campsitesRouter = require('./routes/campsites');
 const usersRouter = require('./routes/users');
 
-var app = express();
+
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+// passport middleware setup
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(function (req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
 
+
+//route setup
 app.use('/', indexRouter);
 app.use('/campsites', campsitesRouter);
 app.use('/users', usersRouter);
 
-// catch 404 and forward to error handler
+// error handling middleware
 app.use(function (req, res, next) {
   next(createError(404));
 });

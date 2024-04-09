@@ -23,8 +23,8 @@ require('dotenv').config();
 require('./config/database');
 
 // Require the app's Mongoose models
-const Movie = require('./models/campsite');
-const Performer = require('./models/user');
+const Campsite = require('./models/campsite');
+const User = require('./models/user');
 
 // Movie.updateMany({}, {cast: []})
 // .then(updateStatus => console.log(updateStatus));

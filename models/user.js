@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-// const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-// new code below
-const User = require('../models/user');
 
 const userSchema = new Schema({
   name: String,
@@ -15,5 +12,5 @@ const userSchema = new Schema({
 }, {
   timestamps: true
 });
-
+ 
 module.exports = mongoose.model('User', userSchema);

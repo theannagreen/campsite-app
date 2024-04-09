@@ -8,13 +8,13 @@
   <title><%= title %></title>
 </head>
 <nav>
- <img src="/images/camera.svg">
+ <!-- <img src="/images/camera.svg"> -->
     <a href="/campsites" <%- title === 'All Campsites' ? 'class="active"' : '' %>>ALL CAMPSITES</a>
     <% if (user) { %>
       <a href="/campsites/new"	<%- title === 'Add Campsite' ? 'class="active"' : '' %>>ADD CAMPSITE</a>
       <a href="/logout">LOG OUT</a>
     <% } else { %>
-      <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+      <a href="/auth/google" class="login">LOG IN&nbsp;<img src="/public/images/google-logo-icon-png-transparent-background-osteopathy-16 - Imgur.png"></a>
     <% } %>
   </nav>
  <body>
