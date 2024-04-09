@@ -1,3 +1,3 @@
 # Exclude .env file and node modules file 
+node_modules
 .env
-.nodemodules
