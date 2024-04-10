@@ -11,7 +11,7 @@
 <nav>
   <a href="/home" <%- title === 'Home' ? 'class="active"' : '' %>>HOME</a>
   <a href="/campsites" <%- title === 'Campsites' ? 'class="active"' : '' %>>CAMPSITES</a>
-  <a href="/FAQ" <%- title === 'FAQ' ? 'class="active"' : '' %>>FAQ</a>
+  <a href="/FAQ" <%- title === 'Add Campsite' ? 'class="active"' : '' %>>ADD CAMPSITE</a>
   <% if (user) { %>
     <a href="/campsites/new" <%- title === 'Add Campsite' ? 'class="active"' : '' %>>ADD CAMPSITE</a>
     <a href="/logout">LOG OUT</a>
