@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html 
+<html>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,16 +7,17 @@
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <title><%= title %></title>
 </head>
+<body>
 <nav>
- <!-- <img src="/images/camera.svg"> -->
-    <a href="/campsites" <%- title === 'All Campsites' ? 'class="active"' : '' %>>ALL CAMPSITES</a>
-    <% if (user) { %>
-      <a href="/campsites/new"	<%- title === 'Add Campsite' ? 'class="active"' : '' %>>ADD CAMPSITE</a>
-      <a href="/logout">LOG OUT</a>
-    <% } else { %>
-      <a href="/auth/google" class="login">LOG IN&nbsp;<img src="/public/images/google-logo-icon-png-transparent-background-osteopathy-16 - Imgur.png"></a>
-    <% } %>
-  </nav>
- <body>
+  <a href="/home" <%- title === 'Home' ? 'class="active"' : '' %>>HOME</a>
+  <a href="/campsites" <%- title === 'Campsites' ? 'class="active"' : '' %>>CAMPSITES</a>
+  <a href="/FAQ" <%- title === 'FAQ' ? 'class="active"' : '' %>>FAQ</a>
+  <% if (user) { %>
+    <a href="/campsites/new" <%- title === 'Add Campsite' ? 'class="active"' : '' %>>ADD CAMPSITE</a>
+    <a href="/logout">LOG OUT</a>
+  <% } else { %>
+    <a href="/auth/google" class="login">LOG IN&nbsp;<img src="/public/images/google-logo-icon-png-transparent-background-osteopathy-16 - Imgur.png"></a>
+  <% } %>
+</nav>
+</body>
 </html>
-

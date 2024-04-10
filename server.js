@@ -24,6 +24,8 @@ require('./config/passport');
 const indexRouter = require('./routes/index');
 const campsitesRouter = require('./routes/campsites');
 const usersRouter = require('./routes/users');
+const reviewsRouter = require('./routes/reviews');
+
 
 
 const app = express();
@@ -60,6 +62,7 @@ app.use(methodOverride('_method'));
 app.use('/', indexRouter);
 app.use('/campsites', campsitesRouter);
 app.use('/users', usersRouter);
+app.use('/campsites/:campsiteId/reviews', reviewsRouter);
 
 // error handling middleware
 app.use(function (req, res, next) {

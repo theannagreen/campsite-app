@@ -4,11 +4,8 @@ const Campsite = require('../models/campsite');
 module.exports = {
     index,
     show,
-    new: newCampsite
-}
-
-async function newCampsite(req, res) {
-    res.render('campsites/new', { title: 'New Campsite'});
+    newCampsite,
+    create
 }
 
  async function index(req, res) {
@@ -29,3 +26,32 @@ async function show(req, res) {
     res.render('campsites/show', { title: 'Description', campsite});
 }
 
+async function newCampsite(req, res) {
+    res.render('campsites/new', { title: 'New Campsite', errorMsg: '' });
+}
+
+
+async function create(req, res) {
+    try {
+        // Extract campsite data from the request body
+        const { campsite, location, longitude, latitude, season, description, mpaaRating } = req.body;
+        // Create a new campsite document
+        const newCampsite = new Campsite({
+            campsite,
+            location,
+            longitude,
+            latitude,
+            season,
+            description,
+            mpaaRating
+        });
+        // Save the new campsite to the database
+        await newCampsite.save();
+        // Redirect to the index page or any other appropriate page
+        res.redirect('/campsites');
+    } catch (error) {
+        // Handle error if creation fails
+        console.error('Error creating campsite:', error);
+        res.status(500).send('Error creating campsite');
+    }
+} 
