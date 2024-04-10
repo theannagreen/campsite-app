@@ -1,18 +1,30 @@
 <%- include('../partials/header') %>
-<!-- <form id="new-form" action="/movies" method="POST">
-    <label>Title:</label>
-    <input type="text" name="title">
-    <label>Release Year:</label>
-    <input type="text" name="releaseYear">
-    <label>MPAA Rating</label>
-    <select name="mpaaRating">
-      <option value="G">G</option>
-      <option value="PG">PG</option>
-      <option value="PG-13">PG-13</option>
-      <option value="R">R</option>
-    </select>
-    <label>Now Showing:</label>
-    <input type="checkbox" name="nowShowing" checked>
-    <input type="submit" value="Add Movie">
-  </form> -->
+
+<h1>Add a New Campsite</h1>
+
+<form action="/campsites" method="POST">
+  <label for="campsite">Campsite Name:</label>
+  <input type="text" id="campsite" name="campsite" required><br>
+
+  <label for="location">Location:</label>
+  <input type="text" id="location" name="location" required><br>
+
+  <label for="longitude">Longitude:</label>
+  <input type="text" id="longitude" name="longitude" required><br>
+
+  <label for="latitude">Latitude:</label>
+  <input type="text" id="latitude" name="latitude" required><br>
+
+  <label for="season">Season:</label>
+  <input type="text" id="season" name="season" required><br>
+
+  <label for="description">Description:</label>
+  <textarea id="description" name="description" required></textarea><br>
+
+  <label for="mpaaRating">Reviews:</label>
+  <input type="text" id="mpaaRating" name="mpaaRating" required><br>
+
+  <input type="submit" value="Submit">
+</form>
+
 <%- include('../partials/footer') %>

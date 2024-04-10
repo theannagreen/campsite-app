@@ -1,3 +1,4 @@
+// campsite/new page for creating new campsites 
 // import campsites model 
 const Campsite = require('../models/campsite');
 
@@ -32,6 +33,7 @@ async function newCampsite(req, res) {
 
 
 async function create(req, res) {
+    console.log('create function called');
     try {
         // Extract campsite data from the request body
         const { campsite, location, longitude, latitude, season, description, mpaaRating } = req.body;
