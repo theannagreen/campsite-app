@@ -4,8 +4,8 @@ console.log("GOOGLE_CALLBACK:", process.env.GOOGLE_CALLBACK);
 
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-
 const User = require('../models/user');
+const ensureLoggedIn = require('../config/ensureLoggedIn');
 
 
 passport.use(new GoogleStrategy({

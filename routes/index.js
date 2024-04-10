@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const ensureLoggedIn = require('../config/ensureLoggedIn');
 const passport = require('passport');
 
 // Get home route
@@ -27,5 +28,10 @@ router.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/campsites');
 });
+
+// autentication route 
+router.get('/protected-route', ensureLoggedIn, (req, res) => {
+
+})
 
 module.exports = router;

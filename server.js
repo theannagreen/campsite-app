@@ -65,7 +65,7 @@ app.use(methodOverride('_method'));
 app.use('/', indexRouter);
 app.use('/campsites', campsitesRouter);
 app.use('/users', usersRouter);
-app.use('/campsites/:campsiteId/reviews', reviewsRouter);
+app.use('/', reviewsRouter);
 
 // error handling middleware
 app.use(function (req, res, next) {

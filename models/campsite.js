@@ -42,7 +42,8 @@ const campsiteSchema = new Schema({
   mpaaRating: {
     type: String,
     enum: ['1', '2', '3', '4', '5']
-  }
+  },
+  reviews: [reviewSchema]
 }, {
   timestamps: true
 });

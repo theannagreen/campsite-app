@@ -122,11 +122,6 @@ table th, table td {
   grid-column: 2 / 3;
 }
 
-.glass {
-  width: 930px;
-  height: 520px;
-  box-shadow: 0 0 8px;
-}
 
 nav {
   display: flex;
@@ -161,4 +156,13 @@ nav ul li {
 .login img {
   width: 30px !important;
   height: auto;
+}
+
+.banner {
+  max-width: 100%;
+  height: auto;
+}
+
+.banner {
+  max-height: 200px;
 }

@@ -2,11 +2,13 @@
 // import campsites model 
 const Campsite = require('../models/campsite');
 
+
 module.exports = {
     index,
     show,
     newCampsite,
-    create
+    create,
+    update
 }
 
  async function index(req, res) {
@@ -35,7 +37,8 @@ async function newCampsite(req, res) {
 async function create(req, res) {
     console.log('create function called');
     try {
-        // Extract campsite data from the request body
+    req.body.campsite
+        //Extract campsite data from the request body
         const { campsite, location, longitude, latitude, season, description, mpaaRating } = req.body;
         // Create a new campsite document
         const newCampsite = new Campsite({
@@ -45,15 +48,33 @@ async function create(req, res) {
             latitude,
             season,
             description,
-            mpaaRating
+            mpaaRating,
+            reviews
         });
         // Save the new campsite to the database
         await newCampsite.save();
         // Redirect to the index page or any other appropriate page
         res.redirect('/campsites');
-    } catch (error) {
+    } catch (err) {
         // Handle error if creation fails
         console.error('Error creating campsite:', error);
         res.status(500).send('Error creating campsite');
     }
-} 
+}
+
+async function update(req, res) {
+    const campsite = await Campsite.findOne({ 'sessions._id': req.params.id });
+    const review = campsite.reviews.id(req.params.id);
+    if (!reviews.user.equals(req.user._id)) return res.redirect('/campsites/${campsite._id');
+    reviews.rating = req.body.rating;
+    reviews.description = req.body.description;
+    reviews.longitude = req.body.longitude;
+    reviews.latitude = req.body.latitude;
+    reviews.season = req.body.season;
+    try {
+        await campsite.save();
+    } catch (err) {
+        console.log(err.message);
+    }
+    res.direct('/session/${session._id}');
+}

@@ -6,6 +6,8 @@
         <tr>
             <th>Campsite</th>
             <th>Location</th>
+            <th>Details</th>
+            <th>Update</th>
             <th></th>
         </tr>
     </thead>
@@ -15,6 +17,7 @@
                 <td><%= c.campsite  %></td>
                 <td><%= c.location %></td>
                 <td><a href="/campsites/<%= c._id %>">Details</a></td>
+                <td><a href="/campsites/<%= c._id %>">Update</a></td>
             </tr>
        <% }); %> 
     </tbody>
