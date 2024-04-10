@@ -1,4 +1,6 @@
+<!--localhost:3000/campsites page -->
 <%- include('../partials/header') %>
+<% console.log(campsites); %>
 <table id="list">
     <thead>
         <tr>
@@ -10,8 +12,9 @@
     <tbody>
         <% campsites.forEach(function(c) { %>
             <tr>
-                <td><%= c.title  %></td>
+                <td><%= c.campsite  %></td>
                 <td><%= c.location %></td>
+                <td><a href="/campsites/<%= c._id %>">Details</a></td>
             </tr>
        <% }); %> 
     </tbody>

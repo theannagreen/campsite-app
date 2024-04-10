@@ -157,4 +157,8 @@ nav ul li {
   align-items: center;
   height: 34px;
 }
-
+ 
+.login img {
+  width: 30px !important;
+  height: auto;
+}
