@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const ensureLoggedIn = require('../config/ensureLoggedIn');
 const passport = require('passport');
 
 // Get home route
@@ -19,19 +18,15 @@ router.get('/auth/google', passport.authenticate('google', {
 
 // Google OAuth callback route
 router.get('/auth/google/callback', passport.authenticate('google', {
-  successRedirect: '/campsites',
-  failureRedirect: '/login'
+  successRedirect: '/',
+  failureRedirect: '/'
 }));
 
-// Logout route
+// Google OAuth Logout route
 router.get('/logout', function(req, res) {
   req.logout();
-  res.redirect('/campsites');
+  res.redirect('/');
 });
 
-// autentication route 
-router.get('/protected-route', ensureLoggedIn, (req, res) => {
-
-})
 
 module.exports = router;
