@@ -17,7 +17,7 @@ router.get('/auth/google', passport.authenticate('google', {
 }));
 
 // Google OAuth callback route
-router.get('/auth/google/callback', passport.authenticate('google', {
+router.get('/oauth2callback', passport.authenticate('google', {
   successRedirect: '/', // redirect to hompage upon authenticating
   failureRedirect: '/login' // redirect to login on authentication failure 
 }));
