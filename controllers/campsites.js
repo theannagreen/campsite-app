@@ -8,7 +8,7 @@ module.exports = {
     show,
     newCampsite,
     create,
-    update
+    update,
 }
 
  async function index(req, res) {
