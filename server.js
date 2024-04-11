@@ -13,7 +13,7 @@ var methodOverride = require('method-override');
 
 //load environment variables from the .env file: 
 
-require('dotenv').config({ debug: true });
+require('dotenv').config();
 // passport has to come after dotenv so it can access it (:
 // database connection 
 require('./config/database');
