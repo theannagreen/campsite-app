@@ -8,6 +8,7 @@
             <th>Location</th>
             <th>Details</th>
             <th>Update</th>
+            <th>Delete</th>
             <th></th>
         </tr>
     </thead>
@@ -18,6 +19,7 @@
                 <td><%= c.location %></td>
                 <td><a href="/campsites/<%= c._id %>">Details</a></td>
                 <td><a href="/campsites/edit/<%= c._id %>">Edit</a></td>
+                <!-- <td><a href="/campsites/deleteCampsite/<%= c._id %>"></a>Delete</td> -->
             </tr>
        <% }); %> 
     </tbody>
