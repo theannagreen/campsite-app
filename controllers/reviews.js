@@ -7,7 +7,6 @@ module.exports = {
   create,
   new: newReview,
   update: updateReview, 
-  delete: deleteReview
 }
 
 async function index(req, res) {
@@ -49,17 +48,4 @@ async function updateReview(req, res) {
       return res.redirect('/campsites');
     }
   }
-
-  async function deleteReview(req, res) {
-    try {
-        // Delete the review from the database
-        await Review.findByIdAndDelete(req.params.id);
-        
-        // Redirect to the reviews index page
-        res.redirect('/reviews');
-    } catch (error) {
-        console.error('Error deleting review:', error);
-        res.status(500).send('Error deleting review');
-    }
-}
 

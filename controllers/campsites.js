@@ -9,7 +9,8 @@ module.exports = {
     newCampsite,
     create,
     update,
-    edit
+    edit,
+    deleteCampsite
 };
 
  async function index(req, res) {
@@ -92,5 +93,17 @@ async function update(req, res) {
     } catch (error) {
         console.error('Error updating campsite:', error);
         res.status(500).send('Error updating campsite: ' + error.message);
+    }
+}
+
+async function deleteCampsite(req, res) {
+    try {
+        // Delete the campsite from the database
+        await Campsite.findByIdAndDelete(req.params.id);
+        // Redirect to the campsite from the index page 
+        res.redirect('/campsites');
+    } catch (error) {
+        console.error('Error deleting campsites:', error);
+        res.status(500).send('Error deleting campsite');
     }
 }
