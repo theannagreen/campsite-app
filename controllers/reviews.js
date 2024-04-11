@@ -6,7 +6,7 @@ module.exports = {
   index,
   create,
   new: newReview,
-  update, 
+  update: updateReview, 
   delete: deleteReview
 }
 
@@ -34,28 +34,7 @@ function newReview(req, req) {
   res.render('/reviews/new', {title: 'Add New Review'})
 }
 
-//     // // Find the campsite by ID
-//     // const campsite = await Campsite.findById(req.params.id);
-  
-//     // // check if campsite exitst: 
-//     // if (!campsite) {
-//     //   return res.status(404).json({ error: 'Campsite not found' });
-//     // }
-
-//     // Create the review
-//     console.log("Trying to push")
-//     campsite.reviews.push({ description, rating, user, });
-//     await campsite.save();
-//     console.log("after the push")
-
-//     res.status(201).json({ message: 'Review created successfully' });
-//   } catch (error) {
-//     console.error('Error creating review:', error);
-//     res.status(500).json({ error: 'Internal server error' });
-//   }
-// }
-
-async function update(req, res) {
+async function updateReview(req, res) {
     try {
       const updatedCampsite = await Campsite.findOneAndUpdate (
         {_id: req.params.id, userRecommending: req.user._id},

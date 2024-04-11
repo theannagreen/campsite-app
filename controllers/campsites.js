@@ -8,8 +8,8 @@ module.exports = {
     show,
     newCampsite,
     create,
-    update,
-}
+    update
+};
 
  async function index(req, res) {
     try {
@@ -49,7 +49,7 @@ async function create(req, res) {
             season,
             description,
             mpaaRating,
-            reviews
+            reviews: []
         });
         // Save the new campsite to the database
         await newCampsite.save();
@@ -85,6 +85,6 @@ async function update(req, res) {
         res.redirect(`/campsites/${campsite._id}`);
     } catch (error) {
         console.error('Error updating campsite:', error);
-        res.status(500).send('Error updating campsite');
+        res.status(500).send('Error updating campsite: ' + error.message);
     }
 }

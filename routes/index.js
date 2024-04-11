@@ -18,8 +18,8 @@ router.get('/auth/google', passport.authenticate('google', {
 
 // Google OAuth callback route
 router.get('/auth/google/callback', passport.authenticate('google', {
-  successRedirect: '/',
-  failureRedirect: '/'
+  successRedirect: '/', // redirect to hompage upon authenticating
+  failureRedirect: '/login' // redirect to login on authentication failure 
 }));
 
 // Google OAuth Logout route

@@ -8,5 +8,6 @@ const reviewSchema = new Schema({
         required: true
     },
     email: String
-    }, {timestamps: true});
+    }, { timestamps: true });
 
+module.exports = mongoose.model('Review', reviewSchema);
