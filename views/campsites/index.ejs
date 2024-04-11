@@ -1,27 +1,31 @@
 <!--localhost:3000/campsites page -->
 <%- include('../partials/header') %>
-<% console.log(campsites); %>
-<table id="list">
-    <thead>
-        <tr>
-            <th>Campsite</th>
-            <th>Location</th>
-            <th>Details</th>
-            <th>Update</th>
-            <th>Delete</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <% campsites.forEach(function(c) { %>
-            <tr>
-                <td><%= c.campsite  %></td>
-                <td><%= c.location %></td>
-                <td><a href="/campsites/<%= c._id %>">Details</a></td>
-                <td><a href="/campsites/edit/<%= c._id %>">Edit</a></td>
-                <!-- <td><a href="/campsites/deleteCampsite/<%= c._id %>"></a>Delete</td> -->
-            </tr>
-       <% }); %> 
-    </tbody>
-</table>
-<%- include('../partials/footer') %>
+    <% console.log(campsites); %>
+        <table id="list">
+            <thead>
+                <tr>
+                    <th>Campsite</th>
+                    <th>Location</th>
+                    <th>Details</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% campsites.forEach(function(c) { %>
+                    <tr>
+                        <td>
+                            <%= c.campsite %>
+                        </td>
+                        <td>
+                            <%= c.location %>
+                        </td>
+                        <td><a href="/campsites/<%= c._id %>">Details</a></td>
+                        <td><a href="/campsites/edit/<%= c._id %>">Edit</a></td>
+                        <td><a href="/campsites/deleteCampsite/<%= c._id %>">Delete</a></td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+        <%- include('../partials/footer') %>
