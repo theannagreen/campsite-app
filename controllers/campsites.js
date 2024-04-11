@@ -8,7 +8,8 @@ module.exports = {
     show,
     newCampsite,
     create,
-    update
+    update,
+    edit
 };
 
  async function index(req, res) {
@@ -33,6 +34,11 @@ async function newCampsite(req, res) {
     res.render('campsites/new', { title: 'New Campsite', errorMsg: '' });
 }
 
+async function edit(req, res) {
+    const campsite = await Campsite.findById(req.params.id);
+    console.log('Editing console', campsite);
+    res.render('campsites/edit', { title: 'Edit', campsite, errorMsg: '' });
+}
 
 async function create(req, res) {
     console.log('create function called');
