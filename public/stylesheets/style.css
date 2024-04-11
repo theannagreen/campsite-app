@@ -41,13 +41,14 @@ nav>a {
 }
 
 nav>a:hover:not(.active) {
-  color: white;
-  background-color: #424748;
+  color: rgb(50, 34, 34);
+  font-weight: bold;
 }
 
 nav>a.active {
-  color: white;
+  color: brown;
   cursor: default;
+  font: bold;
 }
 
 #new-form {

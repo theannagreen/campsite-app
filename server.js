@@ -14,7 +14,6 @@ var methodOverride = require('method-override');
 //load environment variables from the .env file: 
 
 require('dotenv').config();
-// passport has to come after dotenv so it can access it (:
 // database connection 
 require('./config/database');
 require('./config/passport');
@@ -36,6 +35,12 @@ app.use(express.static('public'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
 
 app.use(
   session({
@@ -52,14 +57,6 @@ app.use(function (req, res, next) {
   res.locals.user = req.user;
   next();
 });
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(methodOverride('_method'));
-
 
 //route setup
 app.use('/', indexRouter);

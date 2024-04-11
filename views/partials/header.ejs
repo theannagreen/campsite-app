@@ -9,12 +9,10 @@
 </head>
 <body>
 <nav>
-  <a href="/" <%- title === 'Home' ? 'class="active"' : '' %>>HOME</a>
-  <a href="/campsites" <%- title === 'Campsites' ? 'class="active"' : '' %>>CAMPSITES</a>
-  <a href="/campsites/new" <%- title === 'Add Campsite' ? 'class="active"' : '' %>>ADD CAMPSITE</a>
+  <a href="/campsites" <%- title === 'All Campsites' ? 'class="active"' : '' %>>CAMPSITES</a>
   <% if (user) { %>
-    <a href="/campsites/new" <%- title === 'Add Campsite' ? 'class="active"' : '' %>>ADD CAMPSITE</a>
-    <a href="/logout">LOG OUT</a>
+    <a href="/campsites/new" <%- title === 'New Campsite' ? 'class="active"' : '' %>>NEW CAMPSITE</a>
+    <a href="/logout" method="POST">LOG OUT</a>
   <% } else { %>
     <a href="/auth/google" class="login">LOG IN&nbsp;<img src="/images/google-logo-icon-png-transparent-background-osteopathy-16 - Imgur.png"></a>
     <% } %>
