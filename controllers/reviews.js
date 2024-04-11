@@ -71,12 +71,16 @@ async function update(req, res) {
     }
   }
 
-async function deleteReview (req, res) {
-  try {
-
-  } catch(error) {
-  }
-  await Review.deleteOne({_id: req.params.id});
-  res.redirect('/reviews');
+  async function deleteReview(req, res) {
+    try {
+        // Delete the review from the database
+        await Review.findByIdAndDelete(req.params.id);
+        
+        // Redirect to the reviews index page
+        res.redirect('/reviews');
+    } catch (error) {
+        console.error('Error deleting review:', error);
+        res.status(500).send('Error deleting review');
+    }
 }
 

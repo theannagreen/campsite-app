@@ -63,18 +63,28 @@ async function create(req, res) {
 }
 
 async function update(req, res) {
-    const campsite = await Campsite.findOne({ 'sessions._id': req.params.id });
-    const review = campsite.reviews.id(req.params.id);
-    if (!reviews.user.equals(req.user._id)) return res.redirect('/campsites/${campsite._id');
-    reviews.rating = req.body.rating;
-    reviews.description = req.body.description;
-    reviews.longitude = req.body.longitude;
-    reviews.latitude = req.body.latitude;
-    reviews.season = req.body.season;
     try {
+        const campsite = await Campsite.findById(req.params.id);
+        if (!campsite) {
+            return res.status(404).send("Campsite not found");
+        }
+        
+        // Update the campsite properties
+        campsite.campsite = req.body.campsite;
+        campsite.location = req.body.location;
+        campsite.longitude = req.body.longitude;
+        campsite.latitude = req.body.latitude;
+        campsite.season = req.body.season;
+        campsite.description = req.body.description;
+        campsite.mpaaRating = req.body.mpaaRating;
+        
+        // Save the updated campsite
         await campsite.save();
-    } catch (err) {
-        console.log(err.message);
+        
+        // Redirect to the campsite show page
+        res.redirect(`/campsites/${campsite._id}`);
+    } catch (error) {
+        console.error('Error updating campsite:', error);
+        res.status(500).send('Error updating campsite');
     }
-    res.direct('/session/${session._id}');
 }
