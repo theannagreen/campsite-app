@@ -15,7 +15,7 @@
     "http-errors": "~1.6.3",
     "install": "^0.13.0",
     "method-override": "^3.0.0",
-    "mongoose": "^7.0.2",
+    "mongoose": "^8.3.1",
     "morgan": "~1.9.1",
     "passport": "^0.6.0",
     "passport-google-oauth": "^2.0.0"
