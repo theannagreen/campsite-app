@@ -1,5 +1,5 @@
 ## CampWise App 🏕️
-CampWise is a application designed for campers and van-life enthusiasts who want to share their favorite campsites with the community. Whether you're a seasoned camper or new to the lifestyle, CampWise provides a platform for discovering and sharing. The campsites are budget-friendly, and has the emphasis is on free camping locations.
+CampWise is an application designed for campers and van-life enthusiasts who want to share their favorite campsites with the community. Whether you're a seasoned camper or new to the lifestyle, CampWise provides a platform for discovering and sharing. 
 
 ## Screenshots of Application
 <img src="/images/Landing_pg.jpg">
@@ -12,6 +12,7 @@ CampWise is a application designed for campers and van-life enthusiasts who want
 - HTML
 - CSS
 - Node.js
+- Maps JavaScript API
 
 
 ## Getting Started 
