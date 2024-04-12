@@ -1,7 +1,3 @@
-// console.log("GOOGLE_CLIENT_ID:", process.env.GOOGLE_CLIENT_ID);
-// console.log("GOOGLE_CLIENT_SECRET:", process.env.GOOGLE_CLIENT_SECRET);
-// console.log("GOOGLE_CALLBACK:", process.env.GOOGLE_CALLBACK);
-
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const User = require('../models/user');
