@@ -14,8 +14,6 @@
             <li>Latitude: <%= campsite.latitude %></li>
             <li>Longitude: <%= campsite.longitude %></li>
         </ul>
-
-        
         
                 <!--Reviews -->
         <h1>Campsite Reviews</h1>
@@ -61,28 +59,24 @@
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfFmeEjJ2oTnE9Bcm6TF0J3x9zI5ECY04&callback=initMap"></script>
         <script async defer>
             function initMap() {
-                // Corrected position object with dynamic latitude and longitude
+                // corrected position object with dynamic latitude and longitude
                 const position = { lat: <%= campsite.latitude %>, lng: <%= campsite.longitude %> };
             
-                // Initializing map
+                // initializing map
                 const map = new google.maps.Map(document.getElementById('map'), {
                     zoom: 10, // zoom on map, adjust as needed
                     center: position
                 });
             
-                // Adding marker to the map to show location better 
+                // adding marker to the map to show location better 
                 const marker = new google.maps.Marker({
                     position: position,
                     map: map,
-                    title: '<%= campsite.campsite %>' // Dynamic title based on your campsite name
+                    title: '<%= campsite.campsite %>' 
                 });
             }
 
             initMap()
-            </script>
-        
-      <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfFmeEjJ2oTnE9Bcm6TF0J3x9zI5ECY04&callback=initMap" async defer></script> -->    
-   
+            </script>   
       
-
     <%- include('../partials/footer') %>
