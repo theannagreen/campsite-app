@@ -173,5 +173,11 @@ label {
 }
 
 input {
-  
+  padding-inline: 0.6em;
+  border-radius: 4px;
+  max-width: 14rem;
+  height: 1.4rem;
+  margin-bottom: .5rem;
+  color: rgb(92, 92, 92);
+  border: 1px solid rgb(184 184 184);
 }
