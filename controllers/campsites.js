@@ -1,7 +1,4 @@
-// campsite/new page for creating new campsites 
-// import campsites model 
 const Campsite = require('../models/campsite');
-
 
 module.exports = {
     index,
@@ -14,22 +11,21 @@ module.exports = {
     addReview
 };
 
- async function index(req, res) {
+async function index(req, res) {
     try {
-        // Fetch campsites from the database
+        // grab campsites from the database
         const campsites = await Campsite.find();
-        // Render the index page and pass the campsites data to the template
+        // render index page and pass the campsites data to the template
         res.render('campsites/index', { title: 'All Campsites', campsites: campsites });
     } catch (error) {
-        // Handle error if fetching campsites fails
-        console.error('Error fetching campsites:', error);
+        // error if fetching campsites fails
         res.status(500).send('Error fetching campsites');
     }
 }
 
 async function show(req, res) {
     const campsite = await Campsite.findById(req.params.id);
-    res.render('campsites/show', { title: 'Description', campsite});
+    res.render('campsites/show', { title: 'Description', campsite });
 }
 
 async function newCampsite(req, res) {
@@ -45,10 +41,9 @@ async function edit(req, res) {
 async function create(req, res) {
     console.log('create function called');
     try {
-    req.body.campsite
-        //Extract campsite data from the request body
+        req.body.campsite
+        //pull campsite data from the request body
         const { campsite, location, longitude, latitude, season, description, mpaaRating } = req.body;
-        // Create a new campsite document
         const newCampsite = new Campsite({
             campsite,
             location,
@@ -65,7 +60,7 @@ async function create(req, res) {
         res.redirect('/campsites');
     } catch (err) {
         // Handle error if creation fails
-        console.error('Error creating campsite:', error);
+        console.error('Error creating new campsite:', error);
         res.status(500).send('Error creating campsite');
     }
 }
@@ -76,20 +71,21 @@ async function update(req, res) {
         if (!campsite) {
             return res.status(404).send("Campsite not found");
         }
-        
-        // Update the campsite properties
+
+        // Update the campsite properties *on edit page*
         campsite.campsite = req.body.campsite;
         campsite.location = req.body.location;
         campsite.longitude = req.body.longitude;
         campsite.latitude = req.body.latitude;
         campsite.season = req.body.season;
         campsite.description = req.body.description;
-        
+
         // Save the updated campsite
         await campsite.save();
-        
-        // Redirect to the campsite show page
-        res.render('campsites/show', { title: 'Description', campsite});    } catch (error) {
+
+        // Redirect to the campsite show page *all campsites page*
+        res.render('campsites/show', { title: 'Description', campsite });
+    } catch (error) {
         console.error('Error updating campsite:', error);
         res.status(500).send('Error updating campsite: ' + error.message);
     }
@@ -98,13 +94,11 @@ async function update(req, res) {
 async function deleteCampsite(req, res) {
     try {
         // Delete the campsite from the database
-       const campsiteId = req.params.id;
-       // delete the campsite from the database 
-       await Campsite.findByIdAndDelete(campsiteId);
-        // Send a success response
+        const campsiteId = req.params.id;
+        // delete the campsite from the database 
+        await Campsite.findByIdAndDelete(campsiteId);
         res.redirect('/campsites');
     } catch (error) {
-        // Handle error if deletion fails
         console.error('Error deleting campsite:', error);
         res.status(500).send('Error deleting campsite');
     }
@@ -128,8 +122,7 @@ async function addReview(req, res) {
         // Redirect back to the campsite page
         res.redirect(`/campsites/${campsite._id}`);
     } catch (error) {
-        // Handle error if something goes wrong
-        console.error('Error adding review:', error);
+        console.error('Error adding new review:', error);
         res.status(500).send('Error adding review');
     }
 }

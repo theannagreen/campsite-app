@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-    <!-- Content specific to Campsite Details Page -->
+    <!-- Campsite Details Page -->
     <div class="glass">
 
         <h1><%= campsite.campsite %></h1>
@@ -19,7 +19,7 @@
         
                 <!--Reviews -->
         <h1>Campsite Reviews</h1>
-        <p>This is the reviews page for a specific campsite.</p>
+        <p>This is the reviews page for the selected campsite.</p>
         <h2>Reviews</h2>
         <div>
             <% if (campsite.reviews && campsite.reviews.length> 0) { %>
@@ -41,7 +41,7 @@
                             <% } %>
         </div>
 
-        <!-- Add Review Form -->
+        <!-- Add Review Form & post on same details page-->
         <form id="add-review-form" method="POST" action="/campsites/<%= campsite._id %>/reviews">
             <label>Review:</label>
             <textarea name="content"></textarea>
@@ -55,10 +55,9 @@
             </select>
             <input type="submit" value="Submit Review">
         </form>
-        <form id="add-review-form" method="POST" action="/campsites/<%= campsite._id %>/reviews">
-    </div>
-    </form>
+
     
+    <!--Map-->
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfFmeEjJ2oTnE9Bcm6TF0J3x9zI5ECY04&callback=initMap"></script>
         <script async defer>
             function initMap() {
@@ -67,11 +66,11 @@
             
                 // Initializing map
                 const map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 10, // Adjust zoom level as needed
+                    zoom: 10, // zoom on map, adjust as needed
                     center: position
                 });
             
-                // Adding marker to the map
+                // Adding marker to the map to show location better 
                 const marker = new google.maps.Marker({
                     position: position,
                     map: map,

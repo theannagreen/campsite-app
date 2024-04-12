@@ -1,5 +1,3 @@
-// console.log(process.env);
-
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -9,12 +7,6 @@ const session = require("express-session");
 const passport = require("passport")
 const methodOverride = require('method-override');
 
-
-
-
-
-
-//load environment variables from the .env file: 
 
 require('dotenv').config();
 // database connection 
