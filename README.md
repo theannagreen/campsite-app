@@ -16,6 +16,7 @@ CampWise is a application designed for campers and van-life enthusiasts who want
 
 ## Getting Started 
 Click [here](https://campsite-app-1f55c47c44e7.herokuapp.com) to view the app!
+
 Click [here](https://trello.com/invite/b/uzPKXO9F/ATTI93c5e16877e1b28b9c4c212afb174bd7A67E6C32/project-2-full-stack-crud-app) to view project planning on Trello Board.
 
 ## Next Steps 
