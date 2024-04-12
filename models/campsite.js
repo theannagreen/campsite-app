@@ -34,7 +34,7 @@ const campsiteSchema = new Schema({
     required: true
   },
   latitude: {
-    type: Number,
+    type:  Number,
     required: true
   },
   season: [String],

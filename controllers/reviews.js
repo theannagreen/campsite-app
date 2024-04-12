@@ -1,6 +1,6 @@
 const Campsite = require('../models/campsite');
 const Review = require('../models/review')
-// remove Review if not needed ** 
+
 
 module.exports = {
   index,

@@ -1,10 +1,23 @@
 <%- include('../partials/header') %>
+    <form action="/campsites/edit/<%= campsite._id %>?_method=PUT" method="POST">
+    <label for=" description">Description:</label>
+        <textarea name="description" id="description" name="description" value="<%= campsite.description %>" required></textarea><br>
+        <label for="campsite">Name</label>
+        <input name="campsite" type="text" value="<%= campsite.campsite %>">
 
-<label for="description">Description:</label>
-<textarea id="description" name="description" required></textarea><br>
+        <label for="location">Location</label>
+        <input name="location" type="text" value="<%= campsite.location %>">
 
-<label for="mpaaRating">Rating:</label>
-<input type="text" id="mpaaRating" name="mpaaRating" required><br>
-<input type="submit" value="Submit">
+        <label for="longitude">Longitude</label>
+        <input name="longitude" type="text" value="<%= campsite.longitude %>">
 
-<%- include('../partials/footer') %>
+        <label for="latitude">Latitude</label>
+        <input name="latitude" type="text" value="<%= campsite.latitude %>">
+
+        <label for="season">Season</label>
+        <input name="season" type="text" value="<%= campsite.season %>">
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <%- include('../partials/footer') %>

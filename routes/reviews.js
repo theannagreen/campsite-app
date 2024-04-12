@@ -11,6 +11,5 @@ router.get('/new', ensureLoggedIn, reviewsCtrl.new);
 router.post('/', ensureLoggedIn, reviewsCtrl.create);
 //put edit review 
 router.put('/:id', ensureLoggedIn, reviewsCtrl.update);
-//delete review 
-// router.delete('/:id', ensureLoggedIn, reviewsCtrl.delete)
+
 module.exports = router;

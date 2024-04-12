@@ -6,6 +6,7 @@
                 <tr>
                     <th>Campsite</th>
                     <th>Location</th>
+                    <th>Description</th>
                     <th>Details</th>
                     <th>Update</th>
                     <th>Delete</th>
@@ -21,9 +22,15 @@
                         <td>
                             <%= c.location %>
                         </td>
+                        <td>
+                            <%= c.description %>
+                        </td>
                         <td><a href="/campsites/<%= c._id %>">Details</a></td>
                         <td><a href="/campsites/edit/<%= c._id %>">Edit</a></td>
-                        <td><a href="/campsites/deleteCampsite/<%= c._id %>">Delete</a></td>
+                        <td>
+                            <form method="POST" action="/campsites/<%= c._id %>?_method=DELETE" onsubmit="return confirm('Are you sure you want to delete this campsite?')">
+                                <button type="submit">Delete</button>
+                            </form>
                     </tr>
                     <% }); %>
             </tbody>

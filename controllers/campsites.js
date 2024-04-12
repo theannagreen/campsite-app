@@ -10,7 +10,8 @@ module.exports = {
     create,
     update,
     edit,
-    deleteCampsite
+    deleteCampsite,
+    addReview
 };
 
  async function index(req, res) {
@@ -83,14 +84,12 @@ async function update(req, res) {
         campsite.latitude = req.body.latitude;
         campsite.season = req.body.season;
         campsite.description = req.body.description;
-        campsite.mpaaRating = req.body.mpaaRating;
         
         // Save the updated campsite
         await campsite.save();
         
         // Redirect to the campsite show page
-        res.redirect(`/campsites/${campsite._id}`);
-    } catch (error) {
+        res.render('campsites/show', { title: 'Description', campsite});    } catch (error) {
         console.error('Error updating campsite:', error);
         res.status(500).send('Error updating campsite: ' + error.message);
     }
@@ -99,11 +98,38 @@ async function update(req, res) {
 async function deleteCampsite(req, res) {
     try {
         // Delete the campsite from the database
-        await Campsite.findByIdAndDelete(req.params.id);
-        // Redirect to the campsite from the index page 
+       const campsiteId = req.params.id;
+       // delete the campsite from the database 
+       await Campsite.findByIdAndDelete(campsiteId);
+        // Send a success response
         res.redirect('/campsites');
     } catch (error) {
-        console.error('Error deleting campsites:', error);
+        // Handle error if deletion fails
+        console.error('Error deleting campsite:', error);
         res.status(500).send('Error deleting campsite');
+    }
+}
+
+async function addReview(req, res) {
+    try {
+        // Find the campsite by ID
+        const campsite = await Campsite.findById(req.params.id);
+
+        // Add the review to the campsite's reviews array
+        campsite.reviews.push({
+            userName: req.body.userName,
+            rating: req.body.rating,
+            content: req.body.content
+        });
+
+        // Save the updated campsite
+        await campsite.save();
+
+        // Redirect back to the campsite page
+        res.redirect(`/campsites/${campsite._id}`);
+    } catch (error) {
+        // Handle error if something goes wrong
+        console.error('Error adding review:', error);
+        res.status(500).send('Error adding review');
     }
 }

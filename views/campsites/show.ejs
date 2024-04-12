@@ -1,42 +1,96 @@
 <%- include('../partials/header') %>
 
-<!-- Content specific to the show Campsites page -->
-<div class="glass">
-    <h1>Campsite Details</h1>
-    <p>This is the details page for a specific campsite.</p>
+    <!-- Content specific to Campsite Details Page -->
+    <div class="glass">
 
-    <!--Reviews -->
-    <h2>Reviews</h2>
-    <div>
-        <% if (campsite.reviews && campsite.reviews.length > 0) { %>
-            <% campsite.reviews.forEach(review => { %>
-                <div>
-                    <p><strong>User:</strong> <%= review.userName %></p>
-                    <p><strong>Rating:</strong> <%= review.rating %></p>
-                    <p><strong>Review:</strong> <%= review.content %></p>
-                </div>
-            <% }); %>
-        <% } else { %>
-            <p>No reviews available.</p>
-        <% } %>
-    </div>
+        <h1><%= campsite.campsite %></h1>
 
-    <!-- Add Review Form -->
-    <form id="add-review-form" method="POST" action="/campsites/<%= campsite._id %>/reviews">
-        <label>Review:</label>
-        <textarea name="content"></textarea>
-        <label>Rating:</label>
-        <select name="rating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5" selected>5</option>
-        </select>
-        <input type="submit" value="Add Review">
-    </form>
+        <div id="map" style="width: 100%; height: 300px; border-radius: 20px; border: 5px solid white; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;"></div> 
+
+        <h4>Campsite Details</h4>
+        <ul>
+            <li>Name: <%= campsite.campsite %></li>
+            <li>Description: <%= campsite.description %></li>
+            <li>Latitude: <%= campsite.latitude %></li>
+            <li>Longitude: <%= campsite.longitude %></li>
+        </ul>
+
+
+        <h1>Campsite Reviews</h1>
+        <p>This is the reviews page for a specific campsite.</p>
+
+        <!--Reviews -->
+        <h2>Reviews</h2>
+        <div>
+            <% if (campsite.reviews && campsite.reviews.length> 0) { %>
+                <% campsite.reviews.forEach(review=> { %>
+                    <div>
+                        <p><strong>User:</strong>
+                            <%= review.userName %>
+                        </p>
+                        <p><strong>Rating:</strong>
+                            <%= review.rating %>
+                        </p>
+                        <p><strong>Review:</strong>
+                            <%= review.content %>
+                        </p>
+                    </div>
+                    <% }); %>
+                        <% } else { %>
+                            <p>No reviews available.</p>
+                            <% } %>
+        </div>
+
+        <!-- Add Review Form -->
+        <form id="add-review-form" method="POST" action="/campsites/<%= campsite._id %>/reviews">
+            <label>Review:</label>
+            <textarea name="content"></textarea>
+            <label>Rating:</label>
+            <select name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5" selected>5</option>
+            </select>
+            <input type="submit" value="Add Review">
+        </form>
         <!-- Update Campsite Link -->
         <a href="/campsites/edit/<%= campsite._id %>">Edit Campsite</a>
     </div>
+    <!-- Delete Campsite Button -->
+    <form id="delete-campsite-form" action="/campsites/<%= campsite._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete Campsite</button>
+    </form>
+    
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfFmeEjJ2oTnE9Bcm6TF0J3x9zI5ECY04&callback=initMap"></script>
+        <script async defer>
+            function initMap() {
+                // Corrected position object with dynamic latitude and longitude
+                const position = { lat: <%= campsite.latitude %>, lng: <%= campsite.longitude %> };
+            
+                // Initializing map
+                const map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 10, // Adjust zoom level as needed
+                    center: position
+                });
+            
+                // Adding marker to the map
+                const marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    title: '<%= campsite.campsite %>' // Dynamic title based on your campsite name
+                });
+            }
 
-<%- include('../partials/footer') %>
+            initMap()
+            </script>
+        
+      <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfFmeEjJ2oTnE9Bcm6TF0J3x9zI5ECY04&callback=initMap" async defer></script> -->
+
+
+    
+   
+      
+
+    <%- include('../partials/footer') %>
