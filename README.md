@@ -1,10 +1,10 @@
 ## CampWise App 🏕️
 CampWise is a full CRUD (Create, Read, Update, Delete) application designed for campers and van life enthusiasts who want to share their favorite campsites with the community. Whether you're a seasoned camper or new to the lifestyle, CampWise provides a platform for discovering and sharing campsites that are not only enjoyable but also budget-friendly, as the emphasis is on free camping locations.
 
-## HomePage 
-![Landing Page](/images/Landing_pg.jpg)
-![All Campsites Page](/images/All.jpg)
-![Longitude and Latitude of Campsite Entered by User](/images/map.jpg)
+## Screenshots of Application
+<img src="./images/Landing_pg.jpg">
+<img src="./images/All.jpg">
+<img src="./images/map.jpg">
 
 ## Technologies Used 
 - JavaScript
