@@ -8,7 +8,7 @@ router.get('/', ensureLoggedIn, reviewsCtrl.index);
 //new page to create review 
 router.get('/new', ensureLoggedIn, reviewsCtrl.new);
 //post create
-router.post('/', ensureLoggedIn, reviewsCtrl.create);
+router.post('/:id/reviews', ensureLoggedIn, reviewsCtrl.create);
 //put edit review 
 router.put('/:id', ensureLoggedIn, reviewsCtrl.update);
 

@@ -15,11 +15,11 @@
             <li>Longitude: <%= campsite.longitude %></li>
         </ul>
 
-
+        
+        
+                <!--Reviews -->
         <h1>Campsite Reviews</h1>
         <p>This is the reviews page for a specific campsite.</p>
-
-        <!--Reviews -->
         <h2>Reviews</h2>
         <div>
             <% if (campsite.reviews && campsite.reviews.length> 0) { %>
@@ -53,14 +53,10 @@
                 <option value="4">4</option>
                 <option value="5" selected>5</option>
             </select>
-            <input type="submit" value="Add Review">
+            <input type="submit" value="Submit Review">
         </form>
-        <!-- Update Campsite Link -->
-        <a href="/campsites/edit/<%= campsite._id %>">Edit Campsite</a>
+        <form id="add-review-form" method="POST" action="/campsites/<%= campsite._id %>/reviews">
     </div>
-    <!-- Delete Campsite Button -->
-    <form id="delete-campsite-form" action="/campsites/<%= campsite._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete Campsite</button>
     </form>
     
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfFmeEjJ2oTnE9Bcm6TF0J3x9zI5ECY04&callback=initMap"></script>
@@ -86,10 +82,7 @@
             initMap()
             </script>
         
-      <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfFmeEjJ2oTnE9Bcm6TF0J3x9zI5ECY04&callback=initMap" async defer></script> -->
-
-
-    
+      <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfFmeEjJ2oTnE9Bcm6TF0J3x9zI5ECY04&callback=initMap" async defer></script> -->    
    
       
 
